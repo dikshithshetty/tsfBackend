@@ -29,8 +29,7 @@ SECRET_KEY = 'q(s=i_qtskwn-zhxz01w#(kzms9_5r&_fo0h)v%oqx7l#qc@@g'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '10.0.2.2',
-    '127.0.0.1',
+    '10.114.0.2',
 ]
 
 
@@ -91,12 +90,12 @@ WSGI_APPLICATION = 'TSFRestAPI.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'trouble_school_safe',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3307',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tsfdb',
+        'USER': 'admin_db',
+        'PASSWORD': 'Guilherme0202',
+        'HOST': 'LOCALHOST',
+        'PORT': '',
     }
 }
 
