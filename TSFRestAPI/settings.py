@@ -93,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'tsfdb',
         'USER': 'admin_db',
-        'PASSWORD': 'Guilherme0202',
+        'PASSWORD': 'guilherme0202',
         'HOST': 'LOCALHOST',
         'PORT': '',
     }
