@@ -91,6 +91,7 @@ WSGI_APPLICATION = 'TSFRestAPI.wsgi.application'
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 DATABASE_URL = os.getenv('DATABASE_URL')
+print(DATABASE_URL)
 database_attr = DATABASE_URL.split(':')
 
 JaName = database_attr[3].split('/')[1].rstrip("'")
@@ -107,7 +108,7 @@ if DEVELOPMENT_MODE is True:
         }
     }
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-    if os.getenv("DATABASE_URL", None) is None:
+    if DATABASE_URL is None:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
         "default": {
@@ -116,7 +117,7 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
         'USER': JaUser,
         'PASSWORD': JaPwrd,
         'HOST': JaHost,
-    }
+        }
     }
 
 
