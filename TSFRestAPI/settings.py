@@ -90,16 +90,6 @@ WSGI_APPLICATION = 'TSFRestAPI.wsgi.application'
 
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
-DATABASE_URL = os.getenv('DATABASE_URL')
-print(DATABASE_URL)
-database_attr = DATABASE_URL.split(':')
-
-JaName = database_attr[3].split('/')[1].rstrip("'")
-JaUser = database_attr[1].lstrip('//')
-JaPwrd = database_attr[2].split('@')[0]
-JaHost = database_attr[2].split('@')[1]
-JaPort = int(database_attr[3].split('/')[0])
-
 if DEVELOPMENT_MODE is True:
     DATABASES = {
         "default": {
@@ -108,16 +98,10 @@ if DEVELOPMENT_MODE is True:
         }
     }
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-    if DATABASE_URL is None:
+    if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
-        "default": {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': JaName,
-        'USER': JaUser,
-        'PASSWORD': JaPwrd,
-        'HOST': JaHost,
-        }
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
     }
 
 
