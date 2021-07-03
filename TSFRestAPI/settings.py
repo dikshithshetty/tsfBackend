@@ -89,6 +89,7 @@ WSGI_APPLICATION = 'TSFRestAPI.wsgi.application'
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+print(os.environ.get("DATABASE_URL"))
 
 if DEVELOPMENT_MODE is True:
     DATABASES = {
